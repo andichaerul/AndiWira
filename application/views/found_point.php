@@ -12,8 +12,9 @@ for ($x = 0; $x < count($PointName); $x++) {
 } 
 $ListCordinate = join("|",$carikordinat);
 ?>
+
 <?php
-$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial%20&origins=-5.096227,%20119.510818%20&destinations='.$ListCordinate.'&key=AIzaSyBHW1caUelglRxZTENPSzbdJaupH9MntFs';
+$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial%20&origins='.$_GET['dari'].'&destinations='.$ListCordinate.'&key=AIzaSyBHW1caUelglRxZTENPSzbdJaupH9MntFs';
 $JSON = file_get_contents($url);
 
 // echo the JSON (you can echo this to JavaScript to use it there)
@@ -21,38 +22,45 @@ $JSON = file_get_contents($url);
 
 // You can decode it to process it in PHP
 $data = json_decode($JSON,true);
-echo "<pre>";
-print_r($data);
-echo "</pre>";
+//echo "<pre>";
+//print_r($data);
+//echo "</pre>";
 for ($x = 0; $x < count($PointName); $x++) {
     $value[] = $data['rows']['0']['elements'][$x]['distance']['value'];
 }
 $cari = min($value);   
 echo $cari;
 $carikordinat = array_search($cari,$value);
-echo "".$PointName[$carikordinat]."".$Latitude[$carikordinat].','.$Longitude[$carikordinat]."";
+echo "
+PointName = ".$PointName[$carikordinat]."<br>
+Point Cordinate =".$Latitude[$carikordinat].','.$Longitude[$carikordinat]."<br>";
 ?>
 <?php
-//for ($x = 0; $x < count($PointName); $x++) {
-//  $url = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins='.$_GET['dari'].'&destinations='.$Latitude[$x].','.$Longitude[$x].'&key=AIzaSyBHW1caUelglRxZTENPSzbdJaupH9MntFs';
-//  $JSON = file_get_contents($url);
+for ($x = 0; $x < count($PointName); $x++) {
+	$koma1 = ",";
+    $carikordinat1[] = $Latitude[$x].$koma.$Longitude[$x];
+} 
+$ListCordinate1 = join("|",$carikordinat1);
+?>
+<?php
+$url1 = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial%20&origins='.$_GET['tujuan'].'&destinations='.$ListCordinate1.'&key=AIzaSyBHW1caUelglRxZTENPSzbdJaupH9MntFs';
+$JSON1 = file_get_contents($url1);
 
 // echo the JSON (you can echo this to JavaScript to use it there)
 //echo $JSON;
 
 // You can decode it to process it in PHP
-//$data[$x] = json_decode($JSON,true);
+$data1 = json_decode($JSON1,true);
 //echo "<pre>";
-//print_r($Latitude[$x]);
-//echo "<br>";
-//print_r($Longitude[$x]);
-//print_r($data[$x]['rows']['0']['elements']['0']['distance']);
-//$nilai[] = $data[$x]['rows']['0']['elements']['0']['distance']['value'];
-//echo "</pre>"; 
-//}
-//echo(min($nilai));
-//$cari = min($nilai);  
-//echo array_search($cari,$nilai);
-//$carikordinat = array_search($cari,$nilai);
-//echo "".$PointName[$carikordinat]." ".$Latitude[$carikordinat].','.$Longitude[$carikordinat]."";
+//print_r($data);
+//echo "</pre>";
+for ($x = 0; $x < count($PointName); $x++) {
+    $value1[] = $data1['rows']['0']['elements'][$x]['distance']['value'];
+}
+$cari1 = min($value1);   
+echo $cari1;
+$carikordinat1 = array_search($cari1,$value1);
+echo "
+PointName = ".$PointName[$carikordinat1]."<br>
+Point Cordinate =".$Latitude[$carikordinat1].','.$Longitude[$carikordinat1]."";
 ?>

@@ -1,0 +1,408 @@
+.top-on-black {
+    background: #181919;
+    color: #777777;
+    height: 120px;
+}
+.for-bottom {
+    padding-top: 30px;
+    font-size: 15px;
+}
+
+.telp {
+    text-align: right;
+}
+.for-bottom {
+    padding-top: 30px;
+    font-size: 15px;
+}
+
+.telp {
+    text-align: right;
+}
+
+.main-menu {
+    background: white;
+    margin-top: -50px;
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.menu-kiri {
+    text-align: right;
+}
+.sliderbro {
+    margin-top: -32px;
+}
+.head-new-product {
+    margin-top: 30px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.p-new-product {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.img-product {
+    height: 300px;
+    margin-top: 13px;
+}
+
+.harga {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.productname {
+    text-align: right;
+    font-size: 15px;
+}
+
+.kolom-product:hover .beli {
+    display:block;
+    font-size: 15px;
+    text-align: center;
+    background: #FF5722;
+    color: white;
+    margin-top: 10px;
+    padding: 10px;   
+}
+.kolom-product:hover .tambah-troli {
+    display:block;
+    font-size: 15px;
+    text-align: center;
+    background: #607D8B;
+    color: white;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border-style: none;
+}
+.row.kolom-product {
+    height: 420px;
+}
+.tambah-troli {
+    display: none;
+}
+.beli {
+    display: none;
+}
+.testimoni-content {
+    height: 180px;
+    background: #bcbcbc;
+}
+.penawaran-terbaik {
+    line-height: 80px;
+    background: #465359;
+    color: white;
+}
+
+.text-penawaran {
+    font-size: 20px;
+    text-align: center;
+}
+.img-payment-method {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.subscribe {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.head-subscribe {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.p-subscribe {
+}
+
+.mail-input {
+    text-align: center;
+}
+
+.btn-input {
+    text-align: left;
+}
+
+.input-subscribe {
+}
+.top-on-black {
+    background: #181919;
+    color: #777777;
+    height: 120px;
+}
+.for-bottom {
+    padding-top: 30px;
+    font-size: 15px;
+}
+
+.telp {
+    text-align: right;
+}
+.for-bottom {
+    padding-top: 30px;
+    font-size: 15px;
+}
+
+.telp {
+    text-align: right;
+}
+
+.main-menu {
+    background: white;
+    margin-top: -50px;
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.menu-kiri {
+    text-align: right;
+}
+.sliderbro {
+    margin-top: -32px;
+}
+.head-new-product {
+    margin-top: 30px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.p-new-product {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.img-product {
+    height: 300px;
+    margin-top: 13px;
+}
+
+.harga {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.productname {
+    text-align: right;
+    font-size: 15px;
+}
+
+.kolom-product:hover .beli {
+    display:block;
+    font-size: 15px;
+    text-align: center;
+    background: #FF5722;
+    color: white;
+    margin-top: 10px;
+    padding: 10px;   
+}
+.kolom-product:hover .tambah-troli {
+    display:block;
+    font-size: 15px;
+    text-align: center;
+    background: #607D8B;
+    color: white;
+    margin-top: 10px;
+    padding: 10px;   
+}
+.row.kolom-product {
+    height: 420px;
+}
+.tambah-troli {
+    display: none;
+}
+.beli {
+    display: none;
+}
+.testimoni-content {
+    height: 180px;
+    background: #bcbcbc;
+}
+.penawaran-terbaik {
+    line-height: 80px;
+    background: #465359;
+    color: white;
+}
+
+.text-penawaran {
+    font-size: 20px;
+    text-align: center;
+}
+.img-payment-method {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.subscribe {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.head-subscribe {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.p-subscribe {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 12px;
+}
+
+.mail-input {
+    text-align: center;
+}
+
+.btn-input {
+    text-align: left;
+}
+.head-footer {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.parap-footer {font-size: 12px;margin-bottom: 12px;}
+
+.footer-ori {
+    background: #465359;
+    color: white;
+    padding-top: 20px;
+}
+
+.alamat-footer {
+    margin-bottom: 12px;
+}
+
+.telp-footer {
+    margin-bottom: 12px;
+}
+
+.email-footer {
+    margin-bottom: 12px;
+}
+
+.footer-menu {
+    margin-bottom: 12px;
+}
+
+.sosmed-icon-footer {
+    margin-bottom: 12px;
+}
+
+.opening-time {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+input.subscribe-mail {
+    padding: 12px;
+}
+
+input.submit-subscribe {
+    padding: 14px;
+    background: #181919cc;
+    border-style: none;
+    color: white;
+}
+img.image-cart {
+    height: 100px;
+    width: 80px;
+}
+.harga.none {
+    display: none;
+}
+.cart-total-head {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.cart-total-parap {
+    margin-top: 12px;
+    font-size: 15px;
+}
+
+.line-cart {
+    height: 1px;
+    background: #9E9E9E;
+    margin-top: 12px;
+}
+button.btn-lanjutkan {
+    margin-top: 25px;
+    width: 100%;
+    background: #FF5722;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+}
+.head-checkout {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #eaeaea;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.input-form-pembelian {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-color:#9e9e9e36;
+    border-style:solid;
+    border-width:1px;
+}
+
+textarea.noteaddress {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-color:#9e9e9e36;
+    border-style:solid;
+    border-width:1px;
+    height: 120px;
+}
+textarea.catatan {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-color:#9e9e9e36;
+    border-style:solid;
+    border-width:1px;
+    height: 120px;
+}
+.col-md-4.paket-kolom {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #9e9e9e26;
+    padding: 20px;
+    text-align: center;
+}
+
+.service-paket {
+    font-weight: bold;
+    font-size: 15px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #f1f1f1;
+    margin-bottom: 5px;
+}
+
+.cost-paket {
+    font-size: 15px;
+}

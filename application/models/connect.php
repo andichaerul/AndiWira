@@ -8,6 +8,7 @@ class Connect extends CI_Model{
 	function pembangkitan_populasi(){
 		$this->db->select('*');
 		$this->db->from('point');
+		$this->db->order_by('PointName', 'RANDOM');
 		$data = $this->db->get();
         return $data->result();
 	}

@@ -84,9 +84,9 @@ for ($x = 0; $x < $_GET['max_populasi']; $x++) {
 	} 
 }
 
-echo "<pre>"; 
-print_r($dataprint);
-echo "</pre>";
+//echo "<pre>"; 
+//print_r($dataprint);
+//echo "</pre>";
 for ($x = 0; $x < $_GET['max_populasi']; $x++) {
     $ruru[$x] = join("|",$dataprint[$x]);
     $url2[$x] = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial%20&origins='.$ruru[$x].'&destinations='.$ruru[$x].'&key=AIzaSyBHW1caUelglRxZTENPSzbdJaupH9MntFs';
@@ -122,16 +122,18 @@ if (($key = array_search($lala, $sum)) !== false) {
 }
 $lala1 = (min($sum));
 
-print_r($lala1);
+//print_r($lala1);
+echo "Populasi Awal Yang Dibangkitkan<br>";
 print_r($pointprint); 
 echo "</pre>";
 echo "<pre>";
 $min2 = array_search($lala1,$sum);
-echo "".$min1."".$min2."";
+//echo "".$min1."".$min2."";
 echo "</pre>";
 ?>
 <?php
 echo "<pre>";
+echo "Dua Kromosom yang terbaik adalah ".$min1." & ".$min2."<br>";
 print_r($pointprint[$min1]);
 print_r($pointprint[$min2]);
 echo "<pre>";

@@ -67,10 +67,11 @@ Point Cordinate =".$Latitude[$carikordinat1].','.$Longitude[$carikordinat1]."<br
 
 <?php
 foreach ($pembangkitan_populasi as $row) {
-	$gen[] = $row->PointName;
+	$gen[] = $row->Latitude.$koma.$row->Longitude;
+	$PointNameX[] = $row->PointName;
 }
 for ($x = 0; $x < $_GET['max_populasi']; $x++) {
-	$kromosom[$x] = rand(3,$_GET['kromosom']);
+	$kromosom[$x] = rand(5,$_GET['kromosom']);
     $random_keys[$x]=array_rand($gen,$kromosom[$x]);
 }
 //echo "<pre>"; 
@@ -79,10 +80,59 @@ for ($x = 0; $x < $_GET['max_populasi']; $x++) {
 for ($x = 0; $x < $_GET['max_populasi']; $x++) {
     for ($y = 0; $y < count($random_keys[$x]); $y++) {
     $dataprint[$x][$y] = $gen[$random_keys[$x][$y]];
+    $pointprint[$x][$y] = $PointNameX[$random_keys[$x][$y]];
 	} 
 }
+
 echo "<pre>"; 
 print_r($dataprint);
 echo "</pre>";
-?>
+for ($x = 0; $x < $_GET['max_populasi']; $x++) {
+    $ruru[$x] = join("|",$dataprint[$x]);
+    $url2[$x] = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial%20&origins='.$ruru[$x].'&destinations='.$ruru[$x].'&key=AIzaSyBHW1caUelglRxZTENPSzbdJaupH9MntFs';
+	$JSON2[$x] = file_get_contents($url2[$x]);
 
+$data2[$x] = json_decode($JSON2[$x],true); 
+echo "<pre>";
+//print_r($data2[$x]['rows']);
+echo "</pre>";
+
+for ($y = 0; $y < count($data2[$x]['rows']); $y++) {
+	echo "<pre>";
+//    print_r($data2[$x]['rows'][$y]['elements']);
+    echo "</pre>";
+for ($k = 0; $k < count($data2[$x]['rows'][$y]['elements']); $k++) {
+	echo "<pre>";
+//    print_r($data2[$x]['rows'][$y]['elements'][$k]['distance']['value']);
+    $valuedistance[$x][$y] = $data2[$x]['rows'][$y]['elements'][$k]['distance']['value'];
+    echo "</pre>";
+}
+}
+}
+for ($x = 0; $x < $_GET['max_populasi']; $x++) {
+    $a[$x]=$valuedistance[$x];
+	$sum[$x] = array_sum($a[$x]);
+} 
+echo "<pre>";
+$lala = (min($sum));
+$min1 = array_search($lala,$sum);
+//print_r($lala);
+if (($key = array_search($lala, $sum)) !== false) {
+    unset($sum[$key]);
+}
+$lala1 = (min($sum));
+
+print_r($lala1);
+print_r($pointprint); 
+echo "</pre>";
+echo "<pre>";
+$min2 = array_search($lala1,$sum);
+echo "".$min1."".$min2."";
+echo "</pre>";
+?>
+<?php
+echo "<pre>";
+print_r($pointprint[$min1]);
+print_r($pointprint[$min2]);
+echo "<pre>";
+?>

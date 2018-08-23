@@ -5,6 +5,7 @@
  	$Longitude[] = $row->Longitude;
  }
 ?>
+
 <?php
 for ($x = 0; $x < count($PointName); $x++) {
 	$koma = ',';
@@ -28,12 +29,15 @@ asort($HitungJarak,true);
 //print_r(array_keys($HitungJarak));
 $KeyDistanceMin = (array_keys($HitungJarak));
 echo"<pre>";
+$start = $PointName[$KeyDistanceMin['0']];
 print_r($PointName[$KeyDistanceMin['0']]);
 echo"</pre>";
 echo"<pre>";
 //print_r($data['rows']['0']['elements']);
 echo"</pre>";
-?> 
+?>
+
+
 <?php
 $url1 = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins='.$_GET['tujuan'].'&destinations='.$RenderListCordinate.'&key=AIzaSyBHW1caUelglRxZTENPSzbdJaupH9MntFs';
 $JSON1 = file_get_contents($url1);
@@ -70,4 +74,30 @@ echo"<pre>";
 print_r($populasi);
 echo"</pre>";
 ?>
+<?php
 
+for ($x = 0; $x < count($populasi['1']); $x++) {
+	
+    $waypoint[] = $Latitude[$populasi['1'][$x]].$koma.$Longitude[$populasi['1'][$x]];
+    
+}
+$start = $Latitude[$KeyDistanceMin['0']].$koma.$Longitude[$KeyDistanceMin['0']];
+$finish = $Latitude[$KeyDistanceMin1['0']].$koma.$Longitude[$KeyDistanceMin1['0']];
+$waypointJoin = join("|",$waypoint);
+$url3 = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins='.$start.'|'.$waypointJoin.'|'.$finish.'&destinations='.$start.'|'.$waypointJoin.'|'.$finish.'&key=AIzaSyBHW1caUelglRxZTENPSzbdJaupH9MntFs';
+$JSON3 = file_get_contents($url3);
+
+// echo the JSON (you can echo this to JavaScript to use it there)
+//echo $JSON;
+
+// You can decode it to process it in PHP
+$data3 = json_decode($JSON3, true);
+echo "<pre>";
+print_r($data3);
+
+echo "</pre>";
+for ($x = 0; $x < count($data3['rows']['0']['elements']) ; $x++) {
+    $datadistance[$x] = $data3['rows'][$x]['elements'][$x+'1']['distance']['value'];
+}
+print_r($datadistance);
+?>

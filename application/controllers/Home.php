@@ -17,10 +17,9 @@ class Home extends CI_Controller {
 	public function found_point()
 	{
 		$data['found_point'] = $this->connect->found_point();
-		$data['pembangkitan_populasi'] = $this->connect->pembangkitan_populasi();
 		$this->load->view('head');
-		$this->load->view('found_point',$data);
-
+		// $this->load->view('found_point',$data);
+		$this->load->view('find_point',$data);
 	}
 
 }

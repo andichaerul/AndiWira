@@ -1,4 +1,4 @@
-<form method="get" action="distance_report">
+<form method="get" action="distance_report" target="_blank">
 	<select name="dari">
 		<?php foreach($distance_report as $row): ?>
 			<option value="<?php echo "".$row->Longitude.",".$row->Latitude."" ?>"><?php echo "".$row->PointName."" ?></option>
@@ -34,7 +34,7 @@ for ($x = 0; $x < count($point); $x++) {
 //print_r($kordinatetujuan);
 //pemanggilan fungsi
 echo "<pre>";
-print_r($distancereport);
+print_r(json_encode($distancereport));
 echo "</pre>";
 ?>
 <!-- Kirim Data -->
@@ -44,6 +44,6 @@ echo "</pre>";
 			<option value="<?php echo "".$row->PointID."" ?>"><?php echo "".$row->PointName."" ?></option>
         <?php endforeach; ?>
 	</select>
-	<input type="" name="distance" value="<?php print_r($distancereport) ?>">
+	<input type="" name="distance" value="<?php print_r(json_encode($distancereport)) ?>">
 	<button type="submit">Kirim ke Database</button>
 </form>

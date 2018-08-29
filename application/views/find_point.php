@@ -6,79 +6,57 @@ foreach ($found_point as $row)
 		$Longitude[] = $row->Longitude;
 		$Latitude[] = $row->Latitude;
 		$ID[] = $row->PointID;
+		$distanceslocal[] = $row->Other; 
 	}
 
-//Pencarian Point Start
-function point_start($dari, $tujuan)
-{
-$url = 'https://api.mapbox.com/directions-matrix/v1/mapbox/walking/'.$dari.';'.$tujuan.'?sources=1&annotations=distance&access_token=pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
-$JSON = file_get_contents($url);
-// echo the JSON (you can echo this to JavaScript to use it there)
-//echo $JSON;
-// You can decode it to process it in PHP
-$data = json_decode($JSON,true);
-return $data['distances']['0']['0'];
-}
 $kordinatedari = $_GET['dari'];
+$kordinatetujuan1 = $_GET['tujuan'];
 $koma = ",";
 for ($x = 0; $x < count($point); $x++) {
     $kordinatetujuan[$x] = $Longitude[$x].$koma.$Latitude[$x];
-	$distancereport[$x] = point_start($kordinatedari,$kordinatetujuan[$x]);
 }
-//print_r($kordinatetujuan);
-//pemanggilan fungsi
-echo "<pre>";
-print_r(array_keys($distancereport,min($distancereport)));
-$PointStart = array_keys($distancereport,min($distancereport));
-echo "</pre>";
+$tujuan = join(";",$kordinatetujuan);
 
-// Pencarian Point Tujuan
-function point_tujuan($dari, $tujuan)
-{
-$url = 'https://api.mapbox.com/directions-matrix/v1/mapbox/driving/'.$dari.';'.$tujuan.'?sources=1&annotations=distance&access_token=pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
-$JSON = file_get_contents($url);
-// echo the JSON (you can echo this to JavaScript to use it there)
-//echo $JSON;
-// You can decode it to process it in PHP
-$data = json_decode($JSON,true);
-return $data['distances']['0']['0'];
-}
-$kordinatedari = $_GET['tujuan'];
-$koma = ",";
-for ($x = 0; $x < count($point); $x++) {
-    $kordinatetujuan[$x] = $Longitude[$x].$koma.$Latitude[$x];
-	$distancereport1[$x] = point_tujuan($kordinatedari,$kordinatetujuan[$x]);
-}
-//print_r($kordinatetujuan);
-//pemanggilan fungsi
-echo "<pre>";
-print_r(array_keys($distancereport1,min($distancereport1)));
-$PointFinish = array_keys($distancereport1,min($distancereport1));
-echo "</pre>";
+// // Point Start
+// $url = 'https://api.mapbox.com/directions-matrix/v1/mapbox/walking/'.$kordinatedari.';'.$tujuan.';'.$kordinatetujuan1.'?sources=0&annotations=distance&access_token=pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
+// $JSON = file_get_contents($url);
+// // echo the JSON (you can echo this to JavaScript to use it there)
+// //echo $JSON;
+// // You can decode it to process it in PHP
+// $data = json_decode($JSON,true);
+// for ($x = 1; $x < count($data['distances']['0']); $x++) {
+//     $datapoint[] = $data['distances']['0'][$x];
+// }
+// $PointStart = array_keys($datapoint,min($datapoint));
+
+// // Point Tujuan
+// $url1 = 'https://api.mapbox.com/directions-matrix/v1/mapbox/walking/'.$kordinatetujuan1.';'.$tujuan.'?sources=0&annotations=distance&access_token=pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
+// $JSON1 = file_get_contents($url1);
+// // echo the JSON (you can echo this to JavaScript to use it there)
+// //echo $JSON;
+// // You can decode it to process it in PHP
+// $data1 = json_decode($JSON1,true);
+// for ($x = 1; $x < count($data1['distances']['0']); $x++) {
+//     $datapoint1[] = $data1['distances']['0'][$x];
+// }
+// $PointFinish = array_keys($datapoint1,min($datapoint1));
 
 //Pembangkitan Populasi Awal
+$PointStart = array('1');
+$PointFinish = array('5');
 for ($x = 0; $x < $_GET['max_pop']; $x++) {
-    shuffle($ID);
-    $datapopulasi[] = array_slice($ID, 0, rand(3,count($ID)));
-    $pisah[] = array_search($PointFinish['0'],$datapopulasi[$x]);
-    $populasi[] = array_slice($datapopulasi[$x],0, $pisah[$x]);
-    $merge[] = array_merge($PointStart,$populasi[$x]);
-    $result[] = array_unique($merge[$x]);
-    if (count($result[$x]) > "3") {
-    $hasiltrue[] = array_merge($result[$x],$PointFinish);
-	}
-
-
-} 
-//for ($x = 0; $x < count($datapopulasi); $x++) {
-    
-    //$populasi[] = array_slice($data[$x],0, $pisah[$x]);
-    //$merge[] = array_merge($PointStart,$populasi[$x]);
-    //$result[] = array_unique($merge[$x]);
-
-//} 
+	shuffle($ID);
+	$gabung =array_merge($PointStart,$ID);
+	$duplikathilang = array_unique($gabung);
+	$potong = array_slice($duplikathilang, 0,array_search($PointFinish['0'], $duplikathilang));
+	$populasiawal[] = array_unique(array_merge($potong,$PointFinish));
+}
 echo "<pre>";
-//print_r($datapopulasi);
-print_r($hasiltrue);
-echo "</pre>";
+//print_r($populasiawal);
+//print_r($distanceslocal['0']);
+//print_r($lala);
+echo "</pre>"; 
+
+
 ?>
+

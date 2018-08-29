@@ -6,7 +6,7 @@ foreach ($found_point as $row)
 		$Longitude[] = $row->Longitude;
 		$Latitude[] = $row->Latitude;
 		$ID[] = $row->PointID;
-		$distanceslocal[] = $row->Other; 
+		$distanceslocal[] = json_decode($row->Other); 
 	}
 
 $kordinatedari = $_GET['dari'];
@@ -44,6 +44,7 @@ $tujuan = join(";",$kordinatetujuan);
 //Pembangkitan Populasi Awal
 $PointStart = array('1');
 $PointFinish = array('5');
+
 for ($x = 0; $x < $_GET['max_pop']; $x++) {
 	shuffle($ID);
 	$gabung =array_merge($PointStart,$ID);
@@ -52,11 +53,32 @@ for ($x = 0; $x < $_GET['max_pop']; $x++) {
 	$populasiawal[] = array_unique(array_merge($potong,$PointFinish));
 }
 echo "<pre>";
-//print_r($populasiawal);
-//print_r($distanceslocal['0']);
+print_r($populasiawal);
+//print_r($distanceslocal);
 //print_r($lala);
 echo "</pre>"; 
+error_reporting(0);
+for ($x = 0; $x < count($populasiawal); $x++) {
+    for ($y = 0; $y < count($populasiawal[$x]); $y++) {
 
+    	$jarak[$x][$y] = $distanceslocal[$populasiawal[$x][$y]][$populasiawal[$x][$y+1]];
+    	
+	}
+	$totaljarak[] = array_sum($jarak[$x]);
+	asort($totaljarak);
+}
+$orangtua [] = array_slice(array_keys($totaljarak), 0,2); 
+echo "<pre>";
+print_r($orangtua);
+echo "</pre>";
 
+// Crossover
+$orangtua = $populasiawal['12']; 
+$child = $populasiawal['2'];
+for ($x = 0; $x < count($orangtua); $x++) {
+    if ($orangtua[$x] <> $child[$x]) {
+    echo "Have a good day!";
+	}
+} 
 ?>
 

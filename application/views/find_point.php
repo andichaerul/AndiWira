@@ -52,33 +52,55 @@ for ($x = 0; $x < $_GET['max_pop']; $x++) {
 	$potong = array_slice($duplikathilang, 0,array_search($PointFinish['0'], $duplikathilang));
 	$populasiawal[] = array_unique(array_merge($potong,$PointFinish));
 }
+for ($x = 0; $x <count($populasiawal); $x++) {
+    if (count($populasiawal[$x]) > 4) {
+    	$truepopulasi[] = $populasiawal[$x];
+    };
+} 
 echo "<pre>";
-print_r($populasiawal);
+print_r($truepopulasi);
 //print_r($distanceslocal);
 //print_r($lala);
-echo "</pre>"; 
+echo "</pre>";
 error_reporting(0);
-for ($x = 0; $x < count($populasiawal); $x++) {
-    for ($y = 0; $y < count($populasiawal[$x]); $y++) {
+//pembuatan fungsi
+function hitungjarak($data,$distanceslocal)
+{
+for ($x = 0; $x < count($data); $x++) {
+    for ($y = 0; $y < count($data[$x]); $y++) {
 
-    	$jarak[$x][$y] = $distanceslocal[$populasiawal[$x][$y]][$populasiawal[$x][$y+1]];
+    	$jarak[$x][$y] = $distanceslocal[$data[$x][$y]][$data[$x][$y+1]];
     	
 	}
 	$totaljarak[] = array_sum($jarak[$x]);
 	asort($totaljarak);
 }
-$orangtua [] = array_slice(array_keys($totaljarak), 0,2); 
+$orangtua[] = array_slice(array_keys($totaljarak), 0,2); 
+return $orangtua;
+}
 echo "<pre>";
-print_r($orangtua);
+print_r(hitungjarak($truepopulasi,$distanceslocal));
+$orangtua[] = hitungjarak($truepopulasi,$distanceslocal);
 echo "</pre>";
 
-// Crossover
-$orangtua = $populasiawal['12']; 
-$child = $populasiawal['2'];
-for ($x = 0; $x < count($orangtua); $x++) {
-    if ($orangtua[$x] <> $child[$x]) {
-    echo "Have a good day!";
+// pembuatan fuction crossover
+//pembuatan fungsi
+function perkawinan($parentvar, $childvar)
+{
+	if ($parentvar <> $childvar) {
+		$parent = $parentvar;
+		$child  = $childvar;
+		$devisi = count($parent) / 2;
+		$pointcut = round($devisi);
+		$gen[] = array_unique(array_merge(array_slice($parent, 0,$pointcut-1),array_slice($child, $pointcut-1)));
+		$gen[] = array_unique(array_merge(array_slice($child, 0,$pointcut-1),array_slice($parent, $pointcut-1)));
+		return $gen;
 	}
-} 
+}
+
+echo "<pre>";
+echo "Hasil CrossOver";
+print_r(perkawinan($truepopulasi[$orangtua['0']['0']['0']],$truepopulasi['1']));
+echo "</pre>";
 ?>
 

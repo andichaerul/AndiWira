@@ -106,9 +106,14 @@ function perkawinan($parentvar, $childvar)
 		$pointcut = rand(0,count($parent));
 		$gen = array_unique(array_merge(array_slice($parent, 0,$pointcut-1),array_slice($child, $pointcut-1)));
 		//$gen = array_unique(array_merge(array_slice($child, 0,$pointcut-1),array_slice($parent, $pointcut-1)));
-		return $gen;	
-		
+			
 	}
+	else {
+		
+		$gen = $parentvar;
+	}
+
+	return $gen;
 }
 function perkawinan1($parentvar, $childvar)
 {
@@ -119,10 +124,16 @@ function perkawinan1($parentvar, $childvar)
 		$pointcut = rand(0,count($parent));
 		//$gen = array_unique(array_merge(array_slice($parent, 0,$pointcut-1),array_slice($child, $pointcut-1)));
 		$gen = array_unique(array_merge(array_slice($child, 0,$pointcut-1),array_slice($parent, $pointcut-1)));
-		return $gen;	
-		
+			
 	}
+	else {
+		
+		$gen = $parentvar;
+	}
+
+	return $gen;
 }
+
 //START
 for ($i=0; $i < count($ortu['0']['key_winner']); $i++) { 
 	for ($x=0; $x < count($truepopulasi); $x++) { 
@@ -131,26 +142,31 @@ for ($i=0; $i < count($ortu['0']['key_winner']); $i++) {
 			$truepopulasi1[] = perkawinan1($truepopulasi[$ortu['0']['key_winner'][$i]],$truepopulasi[$x]);
 		}
 	}
-}
+} 
 echo "<pre>";
 print_r($truepopulasi1);
 echo "</pre>";
-// echo "<pre>";
-// echo "Hasil CrossOver / GENERASI KE 2";
-// print_r($generasi);
-// print_r($merge);
-// print_r(hitungjarak($generasi,$distanceslocal));
-// $orangtua2[] = hitungjarak($generasi,$distanceslocal);
-// echo "</pre>";
-// for ($x=0; $x < count($orangtua2['0']['0']); $x++) {
-// 	for ($y = 0; $y < count($generasi); $y++) {
-//     $generasi1[] = perkawinan($generasi[$orangtua['0']['0'][$x]],$generasi[$y]); 
-// 	}  	
-// }
-// echo "<pre>";
-// print_r($generasi1);
-// print_r(hitungjarak($generasi1,$distanceslocal));
-// echo "</pre>";
+echo "<pre>";
+print_r(hitungjarak($truepopulasi1,$distanceslocal));
+$ortu1 = hitungjarak($truepopulasi1,$distanceslocal);
+echo "</pre>";
+
+for ($i=0; $i < count($ortu1['0']['key_winner']); $i++) { 
+	for ($x=0; $x < count($truepopulasi1); $x++) { 
+		if ($i <> $x) {
+			$truepopulasi2[] = perkawinan($truepopulasi1[$ortu1['0']['key_winner'][$i]],$truepopulasi1[$x]);
+			$truepopulasi2[] = perkawinan1($truepopulasi1[$ortu1['0']['key_winner'][$i]],$truepopulasi1[$x]);
+		}
+	}
+} 
+echo "<pre>";
+print_r($truepopulasi2);
+echo "</pre>";
+echo "<pre>";
+print_r(hitungjarak($truepopulasi2,$distanceslocal));
+$ortu2 = hitungjarak($truepopulasi2,$distanceslocal);
+echo "</pre>";
+
 ?>
 
 

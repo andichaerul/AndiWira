@@ -20,6 +20,8 @@ class Home extends CI_Controller {
 		$this->load->view('head');
 		// $this->load->view('found_point',$data);
 		$this->load->view('find_point',$data);
+		$this->load->view('gen1');
+
 	}
 	public function distance_report(){
 		$data['distance_report'] = $this->connect->distance_report();

@@ -18,34 +18,34 @@ for ($x = 0; $x < count($point); $x++) {
 $tujuan = join(";",$kordinatetujuan);
 
 // Point Start
-// $url = 'https://api.mapbox.com/directions-matrix/v1/mapbox/walking/'.$kordinatedari.';'.$tujuan.';'.$kordinatetujuan1.'?sources=0&annotations=distance&access_token=pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
-// $JSON = file_get_contents($url);
-// // echo the JSON (you can echo this to JavaScript to use it there)
-// //echo $JSON;
-// // You can decode it to process it in PHP
-// $data = json_decode($JSON,true);
-// for ($x = 1; $x < count($data['distances']['0']); $x++) {
-//     $datapoint[] = $data['distances']['0'][$x];
-// }
-// $PointStart = array_keys($datapoint,min($datapoint));
+$url = 'https://api.mapbox.com/directions-matrix/v1/mapbox/driving/'.$kordinatedari.';'.$tujuan.';'.$kordinatetujuan1.'?sources=0&annotations=distance&access_token=pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
+$JSON = file_get_contents($url);
+// echo the JSON (you can echo this to JavaScript to use it there)
+//echo $JSON;
+// You can decode it to process it in PHP
+$data = json_decode($JSON,true);
+for ($x = 1; $x < count($data['distances']['0']); $x++) {
+    $datapoint[] = $data['distances']['0'][$x];
+}
+$PointStart = array_keys($datapoint,min($datapoint));
 
-// // Point Tujuan
-// $url1 = 'https://api.mapbox.com/directions-matrix/v1/mapbox/walking/'.$kordinatetujuan1.';'.$tujuan.'?sources=0&annotations=distance&access_token=pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
-// $JSON1 = file_get_contents($url1);
-// // echo the JSON (you can echo this to JavaScript to use it there)
-// //echo $JSON;
-// // You can decode it to process it in PHP
-// $data1 = json_decode($JSON1,true);
-// for ($x = 1; $x < count($data1['distances']['0']); $x++) {
-//     $datapoint1[] = $data1['distances']['0'][$x];
-// }
-// $PointFinish = array_keys($datapoint1,min($datapoint1));
+// Point Tujuan
+$url1 = 'https://api.mapbox.com/directions-matrix/v1/mapbox/driving/'.$kordinatetujuan1.';'.$tujuan.'?sources=0&annotations=distance&access_token=pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
+$JSON1 = file_get_contents($url1);
+// echo the JSON (you can echo this to JavaScript to use it there)
+//echo $JSON;
+// You can decode it to process it in PHP
+$data1 = json_decode($JSON1,true);
+for ($x = 1; $x < count($data1['distances']['0']); $x++) {
+    $datapoint1[] = $data1['distances']['0'][$x];
+}
+$PointFinish = array_keys($datapoint1,min($datapoint1));
 
 //Pembangkitan Populasi Awal
-$PointStart = array('1');
-$PointFinish = array('5');
+// $PointStart = array('1');
+// $PointFinish = array('8');
 echo "<pre>";
-//print_r($distanceslocal);
+////print_r($distanceslocal);
 echo "</pre>";
 for ($x = 0; $x < $_GET['max_pop']; $x++) {
 	shuffle($ID);
@@ -61,9 +61,9 @@ for ($x = 0; $x <count($populasiawal); $x++) {
 } 
 echo "<pre>";
 echo "Populasi Awal";
-print_r($truepopulasi);
-//print_r($distanceslocal);
-//print_r($lala);
+//print_r($truepopulasi);
+////print_r($distanceslocal);
+////print_r($lala);
 echo "</pre>";
 //error_reporting(0);
 //pembuatan fungsi
@@ -91,7 +91,7 @@ function hitungjarak($data,$distanceslocal)
 return $report;
 }
 echo "<pre>";
-print_r(hitungjarak($truepopulasi,$distanceslocal));
+//print_r(hitungjarak($truepopulasi,$distanceslocal));
 $ortu = hitungjarak($truepopulasi,$distanceslocal);
 echo "</pre>";
 
@@ -144,10 +144,10 @@ for ($i=0; $i < count($ortu['0']['key_winner']); $i++) {
 	}
 } 
 echo "<pre>";
-print_r($truepopulasi1);
+//print_r($truepopulasi1);
 echo "</pre>";
 echo "<pre>";
-print_r(hitungjarak($truepopulasi1,$distanceslocal));
+//print_r(hitungjarak($truepopulasi1,$distanceslocal));
 $ortu1 = hitungjarak($truepopulasi1,$distanceslocal);
 echo "</pre>";
 
@@ -161,10 +161,10 @@ for ($i=0; $i < count($ortu1['0']['key_winner']); $i++) {
 	}
 } 
 echo "<pre>";
-print_r($truepopulasi2);
+//print_r($truepopulasi2);
 echo "</pre>";
 echo "<pre>";
-print_r(hitungjarak($truepopulasi2,$distanceslocal));
+//print_r(hitungjarak($truepopulasi2,$distanceslocal));
 $ortu2 = hitungjarak($truepopulasi2,$distanceslocal);
 echo "</pre>";
 
@@ -178,10 +178,10 @@ for ($i=0; $i < count($ortu2['0']['key_winner']); $i++) {
 	}
 } 
 echo "<pre>";
-print_r($truepopulasi3);
+//print_r($truepopulasi3);
 echo "</pre>";
 echo "<pre>";
-print_r(hitungjarak($truepopulasi3,$distanceslocal));
+//print_r(hitungjarak($truepopulasi3,$distanceslocal));
 $ortu3 = hitungjarak($truepopulasi3,$distanceslocal);
 echo "</pre>";
 
@@ -195,10 +195,10 @@ for ($i=0; $i < count($ortu3['0']['key_winner']); $i++) {
 	}
 } 
 echo "<pre>";
-print_r($truepopulasi4);
+//print_r($truepopulasi4);
 echo "</pre>";
 echo "<pre>";
-print_r(hitungjarak($truepopulasi4,$distanceslocal));
+//print_r(hitungjarak($truepopulasi4,$distanceslocal));
 $ortu4 = hitungjarak($truepopulasi4,$distanceslocal);
 echo "</pre>";
 
@@ -213,13 +213,31 @@ for ($i=0; $i < count($ortu4['0']['key_winner']); $i++) {
 	}
 } 
 echo "<pre>";
-print_r($truepopulasi5);
+//print_r($truepopulasi5);
 echo "</pre>";
 echo "<pre>";
-print_r(hitungjarak($truepopulasi5,$distanceslocal));
+////print_r(hitungjarak($truepopulasi5,$distanceslocal));
 $ortu5 = hitungjarak($truepopulasi5,$distanceslocal);
-print_r($truepopulasi5[$ortu5['0']['key_winner']['0']]);
+////print_r($truepopulasi5[$ortu5['0']['key_winner']['0']]);
+$truewinner = array_merge($truepopulasi5[$ortu5['0']['key_winner']['0']]);
+print_r($truewinner);
+for ($x=0; $x < count($truewinner) ; $x++) {
+	$waypoint11[] = $kordinatetujuan[$truewinner[$x]];
+}
+$daridirect[] = $_GET['dari'];
+$tujuandirect[] = $_GET['tujuan'];
+$waypoint[] = array_merge($daridirect,$waypoint11,$tujuandirect);
+$arr = count($waypoint['0'])-1;
+$from = array_slice($waypoint['0'], 0,$arr);
+$to = array_slice($waypoint['0'],1);
+for ($x=0; $x < count($from) ; $x++) {
+ 	$koma1 = ";";
+ 	$request[] = $from[$x].$koma1.$to[$x];
+ }
+////print_r($from);
+//print_r($);
 echo "</pre>";
+
 
 // //GENERASI KE 7
 // for ($i=0; $i < count($ortu5['0']['key_winner']); $i++) { 
@@ -231,10 +249,10 @@ echo "</pre>";
 // 	}
 // } 
 // echo "<pre>";
-// print_r($truepopulasi6);
+// //print_r($truepopulasi6);
 // echo "</pre>";
 // echo "<pre>";
-// print_r(hitungjarak($truepopulasi6,$distanceslocal));
+// //print_r(hitungjarak($truepopulasi6,$distanceslocal));
 // $ortu6 = hitungjarak($truepopulasi6,$distanceslocal);
 // echo "</pre>";
 
@@ -248,12 +266,142 @@ echo "</pre>";
 // 	}
 // } 
 // echo "<pre>";
-// print_r($truepopulasi7);
+// //print_r($truepopulasi7);
 // echo "</pre>";
 // echo "<pre>";
-// print_r(hitungjarak($truepopulasi7,$distanceslocal));
+// //print_r(hitungjarak($truepopulasi7,$distanceslocal));
 // $ortu7 = hitungjarak($truepopulasi7,$distanceslocal);
 // echo "</pre>";
+for ($x=0; $x < count($request); $x++) {
+	$url = 'https://api.mapbox.com/directions/v5/mapbox/driving/'.$request[$x].'.json?access_token=pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow&geometries=geojson';
+	$JSON = file_get_contents($url);
+
+	// echo the JSON (you can echo this to JavaScript to use it there)
+	//echo $JSON;
+
+	// You can decode it to process it in PHP
+	$datapolyline[] = json_decode($JSON,true);
+	$gege[] = json_encode($datapolyline[$x]['routes']['0']['geometry']['coordinates']);
+	
+}
+	$centerr = json_encode($datapolyline['0']['routes']['0']['geometry']['coordinates']['0']);
 ?>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
+var geojson = {
+    "type": "FeatureCollection",
+    "features": [
+    	{
+            "type": "Feature",
+            "properties": {
+                "message": "Foo",
+                "iconSize": [32, 32],
+                "imgname":"dari.png"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    <?php echo "".$_GET['dari']."" ?>
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "message": "Bar",
+                "iconSize": [32, 32],
+                "imgname":"tujuan.png"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    <?php echo "".$_GET['tujuan']."" ?>
+                ]
+            }
+        },
+    <?php
+
+    	for ($x=1; $x < count($waypoint['0'])-1 ; $x++) { 
+    		echo "
+    		{
+            'type': 'Feature',
+            'properties': {
+                'message': 'Foo',
+                'iconSize': [32, 32],
+                'imgname':'point".$x.".png'
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [".$waypoint['0'][$x]."
+                ]
+            }
+        },
+    		";
+    	}
+    ?>
+        
+        
+        
+    ]
+};
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: <?php echo "".$centerr."" ?>,
+    zoom: 15
+});
+geojson.features.forEach(function(marker) {
+    // create a DOM element for the marker
+    var el = document.createElement('div');
+    el.className = 'marker';
+ // el.style.backgroundImage = 'url(https://placekitten.com/g/' + marker.properties.iconSize.join('/') + '/)';
+    el.style.backgroundImage = 'url(http://localhost/AndiWira/img/' + marker.properties.imgname + '';
+    el.style.width = marker.properties.iconSize[0] + 'px';
+    el.style.height = marker.properties.iconSize[1] + 'px';
+
+    el.addEventListener('click', function() {
+        window.alert(marker.properties.message);
+    });
+
+    // add marker to map
+    new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
+});
+map.on('load', function () {
+
+	<?php for ($x=0; $x < count($gege) ; $x++) { 
+		echo "
+		map.addLayer({
+        'id': 'route".$x."',
+        'type': 'line',
+        'source': {
+            'type': 'geojson',
+            'data': {
+                'type': 'Feature',
+                'properties': {},
+                'geometry': {
+                    'type': 'LineString',
+                    'coordinates': ".$gege[$x]."
+                    
+                }
+            }
+        },
+        'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+        },
+        'paint': {
+            'line-color': '#888',
+            'line-width': 8
+        }
+    	});
+		";
+	} ?>
+    
+});
+</script>
 
 

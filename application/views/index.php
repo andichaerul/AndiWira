@@ -15,6 +15,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M
 var geojson = {
     "type": "FeatureCollection",
     "features": [
+        
         {
             "type": "Feature",
             "properties": {

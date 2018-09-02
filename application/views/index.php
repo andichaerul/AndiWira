@@ -11,6 +11,7 @@
 <div id='map'></div>
 
 <script>
+    
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
 var geojson = {
     "type": "FeatureCollection",

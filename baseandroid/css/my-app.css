@@ -1,0 +1,201 @@
+.block.swipeout-content {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.col-50.harga {
+    text-align: right;
+}
+a.tab-link.detail-trip {
+    font-size: 11px !important;
+}
+.timeline-item-date {
+    background: none !important;
+}
+div#nextseatpopup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #f44336;
+    color: white;
+    z-index: 10;
+}
+.for-tombol {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.only-next {
+    background: rgb(255, 255, 255);
+    color: black;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/*CSS SEAT*/
+  input[type=checkbox] {
+display:none;
+}
+ 
+input[type=checkbox] + label
+{background: white;height: 32px;width: 32px;display:inline-block;padding: 0px;border-style: solid;border-width: 1px;margin: 4px;}
+
+input[type=checkbox]:checked + label
+{background: #c0f485;height: 32px;width: 32px;display:inline-block;padding: 0 0 0 0px;}
+
+input[type=checkbox]:disabled + label
+{background: #939393;height: 32px;width: 32px;display:inline-block;padding: 0 0 0 0px;}
+/*tambahan posisi*/
+.table-seat {
+    float: left;
+    /* width: 60%; */
+    padding: 50px;
+    /* margin: 10px; */
+    border-style: solid;
+    border-color: #dededf;
+    border-width: 1px;
+    border-left-width: 4px;
+    border-left-color: #e24648;
+}
+
+.sopir {
+    float: left;
+    margin-right: 12px;
+}
+
+.bus-table10 {
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-color: #dededf;
+    border-width: 1px;
+    margin-bottom: 12px;
+    border-style: solid;
+    border-radius: 5px;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.keterangan-seat {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.soapsub {
+    margin-bottom: 13px;
+    float: left;
+    margin-left: 12px;
+}
+
+span.text-keterangan {
+    margin-left: 10px;
+}
+
+.result-your-select-destinasi {
+    float: left;
+    width: 100%;
+    /* margin: 10px; */
+    padding: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #dededf;
+    border-left-width: 4px;
+    border-left-color: #e24648;
+}
+
+
+.head-detail-perjalanan {
+    height: 40px;
+    line-height: 40px;
+    border-bottom-style: solid;
+    margin-bottom: 12px;
+    border-width: 1px;
+    font-size: 20px;
+    font-weight: bold;
+}
+td.no {
+    visibility: hidden;
+}
+.row.plats {
+    margin-top: 90px;
+}
+
+.formxxhidden {
+    text-align: right;
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
+
+input.buttonnext {
+    width: 170px;
+    background: #e24648;
+    color: white;
+    border-style: none;
+    height: 40px;
+    margin-top: 35px;
+}
+.col-md-4.col-sm-11.ket {
+    margin-bottom: 10px;
+}
+
+.row.col-md-12.col-sm-12.ket-seat-class {
+    font-size: 11px;
+}
+
+table.bustable {
+    background: #dcdcdc26;
+}
+
+ul.seater {
+    overflow: scroll;
+    transform: rotate(90deg);
+}
+td.supir {
+    background: url("../icon/supir.png")no-repeat;
+    height: 32px;
+    width: 32px;
+    display:inline-block;
+    padding: 0px;
+    /* border-style: solid; */
+    /* border-width: 1px; */
+    margin: 5px;
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari 3-8 */
+    transform: rotate(-90deg);
+}
+
+label[for=supir] {display: none !important;}
+/*CSS SEAT END*/
+.row.bottom-for-seat {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: white;
+    z-index: 100;
+}
+
+.col-70.harga-seat {
+    background: #f44336;
+    padding: 16px;
+}
+
+.col-30.tombol-seat {
+    background: #494848;
+    padding: 16px;
+}
+/*SPLASH SCREEN*/
+div#splash-screen {
+    background: #f44336;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+/*SPLASH SCREEN*/

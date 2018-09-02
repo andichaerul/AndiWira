@@ -1,0 +1,77 @@
+<div class="page">
+  <div class="navbar">
+    <div class="navbar-inner sliding">
+      <div class="left">
+        <a class="link back">
+          <i class="icon icon-back"></i>
+          <span class="ios-only">Back</span>
+        </a>
+      </div>
+      <div class="title">Hide On Scroll</div>
+    </div>
+  </div>
+  <!-- Additional "hide-navbar-on-scroll" class to hide navbar on scroll automatically -->
+  <div class="page-content hide-navbar-on-scroll">
+    <div class="seater">
+      <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.</p>
+      ..
+  </div>
+</div>
+<script>
+  app.preloader.show();
+var code= document.getElementById("seatcode").text;
+  return {
+    on: {
+      pageInit: function () {
+        app.request.get('https://birautama.com/sansi/mobileapp/index.php/pages/seat/', { code:'MKS0403' }, function (data) {
+  $$('.seater').html(data);
+  console.log('Load was performed');
+  app.preloader.hide();
+  app.preloader.hide();
+  var row = Array(),
+  booked=Array(),     
+    i = 0,
+    j = 0;
+  modelseat= document.getElementById("xaxa").innerHTML;
+  console.log(modelseat);
+    
+row = eval(modelseat);
+$.each(row, function(index, value) {
+    $('.bustable').append('<tr>');
+    while (j < index + 1) {
+        for (i = 0; i < value.length; i++) {
+            if (row[j][i] !== ' ') {
+                $('.bustable tr:nth-child(' + (index + 1) + ')').append(
+                   '<td seatno=' + row[j][i] + ' class=' + row[j][i] + '><input type=checkbox id=' + row[j][i] + ' value=' + row[j][i] + ' name=seat[]/><label for=' + row[j][i] + '></td>');
+            } else {
+                $('.bustable tr:nth-child(' + (index + 1) + ')').append('<td></td>');
+            }
+        }
+        j++;
+    }
+});
+booked = [];
+$.each(booked, function(i, seatNo) {
+    $("[seatno=" + seatNo + "]").addClass("taken").children().prop("disabled", true)
+});
+
+  var $checkboxes = $('.bustable input[type="checkbox"]');
+        $checkboxes.change(function(){
+        var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
+        $('#total').text(countCheckedCheckboxes);
+    });
+
+ $$('.seat_form').on('click', function(){  
+     mainView.router.navigate('/pax_form/');
+});
+
+});
+      
+      },
+      pageAfterOut: function () {
+        // page has left the view
+        
+      },
+    }
+  }
+</script>

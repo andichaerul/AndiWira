@@ -1,0 +1,122 @@
+<!-- component template -->
+<template>
+  <div class="page">
+    <div class="navbar no-shadow">
+    <div class="navbar-inner sliding">
+      <div class="left">
+        <a class="link back">
+          <i class="icon icon-back"></i>
+          <span class="ios-only">Back</span>
+        </a>
+      </div>
+      <div class="title">Pax Form</div>
+    </div>
+  </div>
+    <div class="page-content">
+      <div id="dasa" style="display: none;"></div>
+      <div id="demo"></div>
+      <div class="list" id="form-pemesanan">
+        <div class="block-title">DATA PEMESAN</div>
+         <ul>
+          <li class="item-divider" style="height: 10px"></li>
+          <li class="item-content item-input row">
+            <div class="item-inner col-30">
+              <div class="item-title item-floating-label">Title</div>
+              <div class="item-input-wrap">
+                <select data-error-message="Wajib diisi" required validate>
+                  <option></option>
+                  <option>Tuan</option>
+                  <option>Nyonya</option>
+                </select>
+              </div>
+            </div>
+            <div class="item-inner col-70">
+              <div class="item-title item-floating-label">Nama Pemesan</div>
+              <div class="item-input-wrap">
+                <input type="text" placeholder="Your name" data-error-message="Nama pemesan harus diisi" required validate>
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li>
+          <li class="item-divider" style="height: 10px"></li>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-floating-label">No Telepon</div>
+              <div class="item-input-wrap">
+                <input type="text" placeholder="Your name" required validate pattern="[0-9]*" data-error-message="No telepon yang anda masukkan salah">
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li> 
+          <li class="item-divider" style="height: 10px"></li>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Email </div>
+              <div class="item-input-wrap">
+                <input type="email" placeholder="Your name" data-error-message="Email anda belum lengkap" required validate>
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li>
+          <li class="item-divider" style="height: 30px"></li>   
+         </ul>
+         
+      </div>
+
+<div class="list" id="form-penumpang">
+        <div class="block-title">DATA PENUMPANG</div>
+         <ul id="data-penumpang-pax">
+             
+         </ul>
+         
+      </div>
+
+        <xx>
+    <span class="value" id="seatcode"></span>
+        <ul class="bustrip">
+            <!--  Here Doom -->
+        </ul></xx>
+      </div>
+    </div>
+  </div>
+</template>
+<!-- component styles -->
+<style>
+  .red-link {
+    color: red;
+  }
+</style>
+<!-- rest of component data and methods -->
+
+<script>  
+  // script must return component object
+  return {
+    on: {
+      pageInit: function () {
+        var users12 = $('input:text.namapenumpang').serialize();
+        console.log(users12);
+         var $checkboxes = $('.bustable input[type="checkbox"]');
+         var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
+         $('#dasa').text(countCheckedCheckboxes);
+         var selected = [];
+        var mkl = $checkboxes.filter(':checked');
+        mkl.each(function() {
+        selected.push($(this).attr('value'));
+        console.log(selected);
+        var formpax = selected;
+        var text = "";
+        var i;
+        for (i = 0; i < formpax.length; i++) {
+          text += "<li class='item-divider' style='height: 10px'></li>          <li class='item-content item-input row'>            <div class='item-inner col-30'>              <div class='item-title item-floating-label'>Gender</div>              <div class='item-input-wrap'>                <select data-error-message='Wajib diisi' required validate>                  <option></option>                  <option>Pria</option>                  <option>Wanita</option>                </select>              </div>            </div>            <div class='item-inner col-70'>              <div class='item-title item-floating-label'>Nama Penumpang</div>              <div class='item-input-wrap'>                <input type='text' class='namapenumpang' placeholder='Your name' name='namapenumpang[]' data-error-message='Nama Penumpang harus diisi' required validate>                <span class='input-clear-button'></span>              </div>            </div>          </li>          <li class='item-divider' style='height: 5px'></li>";
+        }
+        document.getElementById("data-penumpang-pax").innerHTML = text;
+      });
+
+      },
+      pageAfterOut: function () {
+        // page has left the view
+      },
+    }
+  }
+</script>
+

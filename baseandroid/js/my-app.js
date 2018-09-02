@@ -74,7 +74,6 @@ app.preloader.show();
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
     }
     function showPosition(position) {
     document.getElementById("mylocation").value = position.coords.longitude +","+ position.coords.latitude;

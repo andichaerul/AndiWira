@@ -60,7 +60,6 @@ for ($x = 0; $x <count($populasiawal); $x++) {
     };
 } 
 echo "<pre>";
-echo "Populasi Awal";
 //print_r($truepopulasi);
 ////print_r($distanceslocal);
 ////print_r($lala);
@@ -220,7 +219,7 @@ echo "<pre>";
 $ortu5 = hitungjarak($truepopulasi5,$distanceslocal);
 ////print_r($truepopulasi5[$ortu5['0']['key_winner']['0']]);
 $truewinner = array_merge($truepopulasi5[$ortu5['0']['key_winner']['0']]);
-print_r($truewinner);
+//print_r($truewinner);
 for ($x=0; $x < count($truewinner) ; $x++) {
 	$waypoint11[] = $kordinatetujuan[$truewinner[$x]];
 }
@@ -287,7 +286,7 @@ for ($x=0; $x < count($request); $x++) {
 	$centerr = json_encode($datapolyline['0']['routes']['0']['geometry']['coordinates']['0']);
 ?>
 
-<div id='map'></div>
+<div id='map1'></div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
 var geojson = {
@@ -347,7 +346,7 @@ var geojson = {
     ]
 };
 var map = new mapboxgl.Map({
-    container: 'map',
+    container: 'map1',
     style: 'mapbox://styles/mapbox/streets-v9',
     center: <?php echo "".$centerr."" ?>,
     zoom: 15

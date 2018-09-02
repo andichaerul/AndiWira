@@ -9,34 +9,13 @@
           <span class="ios-only">Back</span>
         </a>
       </div>
-      <div class="title">
-        <div class="row" style="font-size: 15px">
-          <div class="col-45%" id="fromnavbar" style="margin-right: 10px"></div>
-          <div class="col-10%">-</div>
-          <div class="col-45%" id="tonavbar" style="margin-left:10px"></div>
-        </div>
-        <div class="row">
-          <div class="col-100%" id="datenavbar" style="font-size: 14px"></div>
-        </div>
-        
+      <div class="title" style="font-size: 15px;">
+        Rute Tercepat Menuju Lokasi Kejadian
       </div>
     </div>
   </div>
     <div class="page-content">
-      <div class="list" style="margin-top: 0px">
-
-<!--Projoject Popup-->
-        
-<!--Projoject Popup-->
-
-        <xx>
-          <span class="value" id="seatcode" style="display:none; "></span>
-              <ul class="bustrip">
-                  </div>
-                </div>
-              </ul>
-      </xx>
-      </div>
+      <div id="div2"></div>
     </div>
   </div>
 </template>
@@ -49,59 +28,22 @@
 <!-- rest of component data and methods -->
 
 <script>
-// Create toast with button
-var toastWithButton = app.toast.create({
-  text: 'Geser list ke kiri untuk melihat detail Perjalanan',
-  closeTimeout: 3000,
-  closeButton: true,
-});
+  app.preloader.show();
   // script must return component object 
+  
   return {
+
     on: {
       pageInit: function () {
-        app.preloader.show();  
-        var dari= document.getElementById("dari").value;
-        var tujuan= document.getElementById("tujuan").value;
-        var tanggal= document.getElementById("calendar-default").value;
-        moment.lang('id');
-        $.getJSON("https://birautama.com/sansi/mobileapp/index.php/pages/result_search/",{dari:dari, tujuan:tujuan, tanggal:tanggal} ,function(result){
-            $.each(result.result_search, function(i, field){
-                $(".bustrip").append('<label class="big"><li class="swipeout"><div class="block swipeout-content"><div class="row"><div class="col-50"><div>' + field.kelas + '</div><div class="item-text">' + moment(field.tanggal_start + ' ' + field.jam_start,'YYYY/MM/DD').format('h:mm a') + ' - ' + moment(field.tanggal_start + ' ' + field.jam_tiba,'YYYY/MM/DD').format('h:mm a') + '</div><div class="item-text">Durasi ' + field.durasi + ' Jam</div></div><div class="col-50 harga"><div class="hargareal">Rp.' + (field.harga).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + ',-</div><div class="bookdirect item-text">/ Penumpang<input type="radio" name="kode" value="' + field.no_kode + '" style="display:none;" id="label' + field.no_kode + '"></div></div></div></div><div class="swipeout-actions-right"><a href="#" class="open-more-actions popup-open" data-popup=".'+field.no_kode+'">Detail</a></div></li></label><li class="item-divider" style="height: 10px"></li><div class="popup '+field.no_kode+'"><div class="page"><div class="block" id="nextseatpopup">  <div class="row">    <div class="col-65 for-tombol">Harga : Rp.' + (field.harga).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + ',/Org-</div>    <label for="label' + field.no_kode + '" class="popup-close col-35 for-tombol only-next">Book</label>  </div></div>                  <div class="navbar no-shadow"><div class="navbar-inner sliding"><div class="left"><a href="#" class="link popup-close"><i class="f7-icons">close</i></a></div><div class="title">Detail Perjalanan</div></div></div><div class="toolbar tabbar no-shadow"><div class="toolbar-inner"><a href="#tab-1'+field.no_kode+'" class="tab-link detail-trip tab-link-active">Keberangkatan</a><a href="#tab-2'+field.no_kode+'" class="tab-link detail-trip">Fasilitas</a><a href="#tab-3'+field.no_kode+'" class="tab-link detail-trip">Info Harga</a></div></div><div class="tabs-animated-wrap"><div class="tabs"><div id="tab-1'+field.no_kode+'" class="page-content tab tab-active"><div class="block"><div class="timeline"><div class="timeline-item"><div class="timeline-item-date">' + moment(field.tanggal_start + ' ' + field.jam_start,'YYYY/MM/DD').format('h:mm a') + '</div><div class="timeline-item-divider"></div><div class="timeline-item-content"><div class="timeline-item-time">' + moment(field.tanggal_start,'YYYY/MM/DD').format('dddd, Do MMMM YYYY') + '</div><div class="timeline-item-title">'+field.from+'</div><div class="timeline-item-subtitle">'+field.kelas+'</div><div class="timeline-item-time">Durasi ' + field.durasi + ' Jam</div></div></div><div class="timeline-item"><div class="timeline-item-date">' + moment(field.tanggal_start + ' ' + field.jam_tiba,'YYYY/MM/DD').format('h:mm a') + '</div><div class="timeline-item-divider"></div><div class="timeline-item-content"><div class="timeline-item-time">' + moment(field.tanggal_start,'YYYY/MM/DD').format('dddd, Do MMMM YYYY') + '</div><div class="timeline-item-title">'+field.to+'</div><div class="timeline-item-subtitle">'+field.kelas+'</div></div></div></div></div></div><div id="tab-2'+field.no_kode+'" class="page-content tab">              <div class="block">                <div class="list media-list">  <ul>    <li>      <div class="item-content">        <div class="item-inner">          <div class="item-title-row">            <div class="item-title">Kelas '+field.kelas+'</div>            <div class="item-after">'+field.from+' - '+field.to+'</div>          </div>          <div class="item-subtitle">Fasilitas</div>          <div class="item-text">'+field.fasilitas+'</div>        </div>      </div>    </li>  </ul></div>              </div>            </div>            <div id="tab-3'+field.no_kode+'" class="page-content tab">              <div class="block">                <div class="list media-list">  <ul>    <li>      <div class="item-content">        <div class="item-inner">          <div class="item-title-row">            <div class="item-title">Rp.' + (field.harga).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + ',-</div>            <div class="item-after"></div>          </div>          <div class="item-subtitle">Informasi Refund</div>          <div class="item-text">Pembatalan tiket paling lambat 2 Hari sebelum keberangkatan, dikenakan biaya 50% dari total harga tiket yang dibeli</div>        </div>      </div>    </li>  </ul></div>              </div>            </div>          </div>        </div>  </div></div>');
-                   toastWithButton.open();
-            });
-            $.each(result, function(i, field){
-              $(".bustrip").append(field);
-            });
-            
-            $.each(result.start, function(i, field){
-              $("#fromnavbar").append(field.daftar_rute);
-            });
-            $.each(result.tujuan, function(i, field){
-              $("#tonavbar").append(field.daftar_rute);
-            });
-            
-            var xx = moment(tanggal,'YYYY/MM/DD').format('dddd, Do MMMM YYYY');
-            document.getElementById("datenavbar").innerHTML = xx;
-
-  
-  $$("input[type='radio']").change(function(){
-    var radioValue = $$(this).val();
-    if(radioValue){
-        $$(this).closest('xx').find('.value').text(radioValue);
-    }
-});   
-  app.preloader.hide();
-  $$('.block.swipeout-content').on('click', function(){
-    mainView.router.navigate('/seat/');
-  });
-  $$('label.col-35.for-tombol.only-next').on('click', function(){
-    mainView.router.navigate('/seat/');
-  });
-});
-
-        
-         
+        $(document).ready(function(){
+          $("#div2").load("http://localhost/AndiWira/home/found_point?dari=119.513224,-5.093979&tujuan=119.532848,-5.095873&max_pop=20");
+          setTimeout(function() {
+          app.preloader.hide();
+          }, 3000);
+        });
+          
       },
+
       pageAfterOut: function () {
         // page has left the vie
         

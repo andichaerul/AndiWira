@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS -->
+    <link rel="stylesheet" href="css/framework7.min.css">
+    <!-- Font CSS -->
+    <link rel="stylesheet" href="css/framework7-icons.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <!-- <script src="https://code.jquery.com/jquery-git.js"></script> -->
+    <script src="js/jquery-git.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/id.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- <script type="text/javascript" charset="utf-8" src="cordova.js"></script> -->
+    <script type="text/javascript" charset="utf-8">
+    // Wait for device API libraries to load
+    //
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        window.plugins.OneSignal
+        .startInit("0597bf91-87ee-40e5-8928-a82c1e0b83f3")
+        .handleNotificationReceived(function (jsonData) {
+        alert(JSON.stringify(jsonData.payload.additionalData.inikordinat));
+        var mydata = JSON.stringify(jsonData);
+        var obj = JSON.parse(mydata);
+        document.getElementById("reportlocation").value = obj.payload.additionalData.inikordinat;
+        console.log('Did I receive a notification: ' + JSON.stringify(jsonData));
+})
+.endInit();
+    }
+    </script>
+  </head>
+  <body class="color-theme-red" onload="onLoad()">
+    <!-- App root element -->
+    <div id="app">
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <!-- Initial Page, "data-name" contains page name -->
+        <div data-name="home" class="page">
+  <!-- Top Navbar -->
+  <div class="page">
+      <div class="navbar no-shadow">
+          <div class="navbar-inner">
+               <div class="title">Aplikasi Pencarian Rute Tercepat</div>
+               <div class="right">
+                <a href="#" class="link icon-only panel-open" data-panel="left">
+                  <i class="f7-icons">settings</i>
+                </a>
+              </div>
+          </div>  
+      </div>
+      <!-- Scrollable page content -->
+      <div class="page-content">
+        <!-- Load dom map -->
+        <input type="" name="" id="mylocation" value="">
+        <input type="" name="" id="reportlocation" value="119.496315,-5.105392">
+        <div id="div1"></div>
+        <button class="col button button-fill button-round" id="tombolcarirute">Cari Rute Terbaik</button>
+      </div>
+      </div>
+  </div>
+    
+          <a href="/one/">sss</a>
+           <a href="/seat/">seat</a>
+        </div>
+      </div>
+
+</div>
+
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+  </body>
+</html>

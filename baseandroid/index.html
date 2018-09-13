@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <!-- Color theme for statusbar -->
-    <meta name="theme-color" content="#2196f3">
+    <meta name="theme-color" content="#c3291e">
     <!-- Your app title -->
     <title>My App</title>
     <!-- Path to Framework7 Library CSS -->
@@ -21,8 +21,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/id.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
-  </head>
-  <body class="color-theme-red">
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    // Wait for device API libraries to load
+    //
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        
+    }
+    </script>
+  </head> 
+  <body class="color-theme-red" onload="onLoad()">
     <!-- App root element -->
     <div id="app">
       <!-- Your main view, should have "view-main" class -->
@@ -33,9 +47,9 @@
   <div class="page">
       <div class="navbar no-shadow">
           <div class="navbar-inner">
-               <div class="title">Aplikasi Pencarian Rute Tercepat</div>
+               <div class="title">Aplikasi Pelapor</div>
                <div class="right">
-                <a href="#" class="link icon-only panel-open" data-panel="left">
+                <a href="#" class="link icon-only popup-open" data-popup=".my-popup">
                   <i class="f7-icons">settings</i>
                 </a>
               </div>
@@ -43,17 +57,89 @@
       </div>
       <!-- Scrollable page content -->
       <div class="page-content">
+        <div class="popup my-popup">
+            <div class="view">
+              <div class="page">
+                <div class="navbar">
+                  <div class="navbar-inner">
+                    <div class="title">Biodata</div>
+                    <div class="right">
+                      <!-- Link to close popup -->
+                      <a class="link popup-close"><i class="f7-icons">close</i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="page-content">
+      <div class="block">
+            Tekan tombol Back jika selesai mengisi data
+      </div>
+      <div class="list">
+        <form class="form-store-data" id="my-form">
+        <ul>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <!-- "item-floating-label" class on item title -->
+              <div class="item-title item-floating-label">Nama Lengkap</div>
+              <div class="item-input-wrap">
+                <input type="text" name="nama" id="nama">
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <!-- "item-floating-label" class on item title -->
+              <div class="item-title item-floating-label">Nomor Telepon</div>
+              <div class="item-input-wrap">
+                <input type="text" name="telp" id="telp">
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li>
+        </ul>
+        </form>
+    </div>
+    </div>
+              </div>
+            </div>
+        </div>    
+        <div class="list">
         <!-- Load dom map -->
-        <input type="" name="" id="mylocation" value="">
-        <input type="" name="" id="reportlocation" value="119.456910,-5.154845">
-        <div id="div1"></div>
-        <button class="col button button-fill button-round" id="tombolcarirute">Cari Rute Terbaik</button>
+        <ul>
+        <li>
+         <a class="item-link smart-select smart-select-init">
+            <select name="kasus" id="kasus">
+              <option value="" selected>-</option>
+              <option value="Kecelakaan lalu lintas">Kecelakaan lalu lintas</option>
+              <option value="Kebakaran">Kebakaran</option>
+              <option value="Penemuan Mayat">Penemuan Mayat</option>
+              <option value="KDRT (Kekerasan dalam rumah tangga)">Kekerasan dalam rumah tangga</option>
+              <option value="Kasus Pembunuhan">Pembunuhan</option>
+              <option value="Terjadi perkelahian">Perkelahian</option>
+            </select>
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-title">Kategori</div>
+            </div>
+        </div>
+      </a>
+      </li>
+      <li class="item-content item-input">
+            <div class="item-inner">
+              <!-- "item-floating-label" class on item title -->
+              <div class="item-title item-floating-label">Pesan untuk petugas</div>
+              <div class="item-input-wrap">
+                <textarea id="pesan"></textarea>
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li>
+      </ul>
+    </div>
+    <button class="col button button-fill button-round" id="lapor">Lapor Ke Petugas</button>
       </div>
       </div>
   </div>
-    
-          <a href="/one/">sss</a>
-           <a href="/seat/">seat</a>
         </div>
       </div>
 

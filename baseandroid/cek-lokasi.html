@@ -10,14 +10,14 @@
         </a>
       </div>
       <div class="title" style="font-size: 15px;">
-        Melakukan Pelaporan
+        Lokasi Kejadian
       </div>
     </div>
   </div>
     <div class="page-content">
-      <div><input type="hidden" name="" id="cordinate"></div>
-      <div id="loading"></div>
-      <div id="div2"></div>
+      <div id="loading">Sedang Loading...</div>
+      <div id="div1"></div>
+      <button class="col button button-fill button-round" id="carirute">Cari Rute Terbaik</button>
     </div>
   </div>
 </template>
@@ -30,34 +30,32 @@
 <!-- rest of component data and methods -->
 
 <script>
-
   // script must return component object 
-  
+ 
   return {
 
     on: {
       pageInit: function () {
-        if (navigator.geolocation) {
+      if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
       } else { 
       }
       function showPosition(position) {
-      document.getElementById("cordinate").value = position.coords.longitude +","+ position.coords.latitude;
+      document.getElementById("mylocation").value = position.coords.longitude +","+ position.coords.latitude;
       }
-        $(document).ready(function(){
-          setTimeout(function() {
-          var kasus = $("#kasus").val().replace(/\s/g,"%20");
-          var nama = $("#nama").val().replace(/\s/g,"%20");
-          var telepon = $("#telp").val();
-          var pesan = $("#pesan").val().replace(/\s/g,"%20");
-          var cordinate = $("#cordinate").val();
-          console.log(kasus);
-          console.log(nama);
-          console.log(telepon);
-          console.log(pesan);
-          $("#div2").load("http://localhost/AndiWira/request?kasus="+kasus+"&nama="+nama+"&telepon="+telepon+"&pesan="+pesan+"&cordinate="+cordinate+"");
-          },5000);
-          });
+      $(document).ready(function(){
+      var delay = 1000;
+      setTimeout(function() {
+          var mylocation = $("#mylocation").val();
+          var reportlocation = $("#reportlocation").val();
+          console.log(mylocation);
+          $("#div1").load("https://birautama.com/genetika/wira/AndiWira/?dari="+mylocation+"&tujuan="+reportlocation+"");
+          }, 2000);
+
+        });
+      $('#carirute').on('click', function(){
+      mainView.router.navigate('/result/');
+      });
           
       },
 

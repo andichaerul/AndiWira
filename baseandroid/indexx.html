@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Device Ready Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        // Now safe to use device APIs
+        window.plugins.OneSignal
+.startInit("0597bf91-87ee-40e5-8928-a82c1e0b83f3")
+.handleNotificationReceived(function (jsonData) {
+    alert("Notification received:\n" + JSON.stringify(jsonData));
+    console.log('Did I receive a notification: ' + JSON.stringify(jsonData));
+})
+.endInit();
+    }
+
+    </script>
+  </head>
+  <body onload="onLoad()">
+  </body>
+</html>

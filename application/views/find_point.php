@@ -1,3 +1,4 @@
+<div id='map1'></div>
 <?php
 // Resource Dari database
 foreach ($found_point as $row) 
@@ -234,7 +235,7 @@ for ($x=0; $x < count($from) ; $x++) {
  	$request[] = $from[$x].$koma1.$to[$x];
  }
 ////print_r($from);
-//print_r($);
+// print_r($request);
 echo "</pre>";
 
 
@@ -285,8 +286,41 @@ for ($x=0; $x < count($request); $x++) {
 }
 	$centerr = json_encode($datapolyline['0']['routes']['0']['geometry']['coordinates']['0']);
 ?>
+      
+        <!-- Open About Popup -->
+<!--         <p><a class="link popup-open" href="#" data-popup=".popup-about">Open About Popup</a></p>
+        Open Services Popup -->
+ <!--        <p><a class="link popup-open" href="#" data-popup=".popup-services">Open Services Popup</a></p>
+        <p><a class="link dynamic-popup" href="#">Create Dynamic Popup</a></p>
+  <div class="popup popup-about">
+  	<div class="page"> -->
+	 <!--  	<div class="navbar no-shadow">
+	          <div class="navbar-inner">
+	               <div class="title" style="font-size: 15px">Proses Algoritma Genetika</div>
+	               <div class="right">
+	               	<a href="#" class="link popup-close">
+	                  <i class="f7-icons">close</i> -->
+	                <!-- </a> -->
+	                <!-- <a class="link popup-close" href="#">Close</a> -->
+	            <!--   </div>
+	          </div>  
+	      </div> -->
+	    <!-- <div class="page-content">   -->
+		    <!-- <div class="block"> --> 
+		    	<!-- Populasi Pertama
+		    	 for ($x=0; $x < count($truepopulasi) ; $x++) { 
+		    		// echo "<pre>";
+		    		// echo "Kromosom ".$x."<br>";
+		    		// print_r(join(" ",$truepopulasi[$x]));
+		    		// echo "</pre>";
+		    	} -->
+	<!-- 	    	
+		   	</div>
+	    </div>
+	</div>
+  </div> -->
 
-<div id='map1'></div>
+
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kaWNoYWVydWw4NSIsImEiOiJjamxhZDB1bWU0MzY4M3dxdGJsbmxqenZxIn0.pOPzmIUQmOrjh1on8-Ytow';
 var geojson = {

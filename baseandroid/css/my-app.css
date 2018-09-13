@@ -1,4 +1,27 @@
-button#tombolcarirute {
+button#ceklokasi {
+    position: fixed !important;
+    bottom: 35px;
+    left: 5%;
+    width: 90%;
+}
+button#carirute {
+    position: fixed !important;
+    bottom: 35px;
+    left: 5%;
+    width: 90%;
+}
+.row {
+    margin-bottom: 20px;
+}
+div#loading {
+    position: absolute;
+    bottom: 0;
+    top: 120px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+}
+button#lapor {
     position: fixed !important;
     bottom: 35px;
     left: 5%;

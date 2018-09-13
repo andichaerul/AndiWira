@@ -32,6 +32,10 @@ var app = new Framework7({
       path: '/result/',
       componentUrl: './result.html',
     },
+    {
+      path: '/cek-lokasi/',
+      componentUrl: './cek-lokasi.html',
+    },
     
     {
       path: '/seat/',
@@ -43,6 +47,10 @@ var app = new Framework7({
     {
       path: '/pax_form/',
       componentUrl: './pax_form.html',
+    },
+    {
+      path: '/biodata/',
+      componentUrl: './biodata.html',
     },    
   ],
   calendar: {
@@ -69,36 +77,37 @@ var calendarDefault = app.calendar.create({
     closeOnSelect:'true',
 });
 
-$("#splash-screen").delay(3000).fadeOut();
-app.preloader.show(); 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-    }
-    function showPosition(position) {
-    document.getElementById("mylocation").value = position.coords.longitude +","+ position.coords.latitude;
-    }
-    $(document).ready(function(){
-        var delay = 1000;
-        setTimeout(function() {
-          var mylocation = $("#mylocation").val();
-          console.log(mylocation);
-          $("#div1").load("http://localhost/AndiWira/?dari="+mylocation+"&tujuan=119.456910,-5.154845");
-          }, 2000);
-    app.preloader.hide();    
-    });  
+// $("#splash-screen").delay(3000).fadeOut();
+// app.preloader.show(); 
+    // if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition(showPosition);
+    // } else { 
+    // }
+    // function showPosition(position) {
+    // document.getElementById("mylocation").value = position.coords.longitude +","+ position.coords.latitude;
+    // }
+    // $(document).ready(function(){
+    //     var delay = 1000;
+    //     setTimeout(function() {
+    //       var mylocation = $("#mylocation").val();
+    //       var reportlocation = $("#reportlocation").val();
+    //       console.log(mylocation);
+    //       $("#div1").load("https://birautama.com/genetika/wira/AndiWira/?dari="+mylocation+"&tujuan="+reportlocation+"");
+    //       }, 2000);
+    // app.preloader.hide();    
+    // });  
           
 
  
 var toastBottom = app.toast.create({
-  text: 'Tidak dapat menemukan Pelapor',
+  text: 'Kasus anda belum ditentukan',
   closeTimeout: 2000,
 });
 
-$$('#tombolcarirute').on('click', function(){
-  var reportlocation= document.getElementById("reportlocation").value;   
+$$('#lapor').on('click', function(){
+  var kasus= document.getElementById("kasus").value;   
     
-  if (reportlocation==null || reportlocation=="")
+  if (kasus==null || kasus=="")
         {
             toastBottom.open();
             return false;
